@@ -21,11 +21,8 @@ dependencies: []
 repo: https://github.com/Silver765/Triple-X
 support: https://github.com/Silver765/Triple-X/issues
 port: 3000
-# Add real screenshots here before publishing - these are placeholders.
 gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+  - https://raw.githubusercontent.com/Silver765/Triple-X/main/TripleX-triple-x/screenshots/overview.png
 path: ""
 defaultUsername: ""
 defaultPassword: ""
