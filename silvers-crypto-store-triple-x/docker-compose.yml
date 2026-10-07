@@ -17,12 +17,12 @@ version: "3.7"
 
 services:
   web:
-    # Pinned to the v1.2-RC4 build's exact digest (not :latest) so the
+    # Pinned to the v1.2-RC5 build's exact digest (not :latest) so the
     # platform is forced to pull this specific image instead of reusing
     # whatever it already has cached under a floating tag. Update this
     # digest (see ../.github/workflows/publish-images.yml) every time a new
     # version is published.
-    image: ghcr.io/silver765/triple-x-app@sha256:33bb8598eb2b862cde63f60d72c82894c3f160c9588df2b94976bc04260c3bf4
+    image: ghcr.io/silver765/triple-x-app@sha256:eb803bcd0b5c24fb3de7784b246fc121f5793d65876f43662c4342d602a8feb2
     restart: unless-stopped
     stop_grace_period: 1m
     # 5tratumOS runs no app_proxy - publish the manifest's `port:` (3000)
@@ -79,8 +79,8 @@ services:
       COMMAND_FIFO: /data/config/p2pool-command
 
   monerod:
-    # Pinned to the v1.2-RC4 build's exact digest - see note on web's image above.
-    image: ghcr.io/silver765/triple-x-monerod@sha256:073f6c52aec0772302338727502083ad8140ad4c2eca29db61d201e9708b4f4b
+    # Pinned to the v1.2-RC5 build's exact digest - see note on web's image above.
+    image: ghcr.io/silver765/triple-x-monerod@sha256:3e6c875e8f9dbf03591ce58bfc0c4f6e43ac4fdd162f1dcdc0ffad2030b624b1
     restart: unless-stopped
     stop_grace_period: 1m
     command:
@@ -110,10 +110,10 @@ services:
   # --disable-rpc-login - never published to the host (no `ports:` here),
   # same internal-network-only trust boundary monerod's own RPC relies on.
   monero-wallet-rpc:
-    # Pinned to the v1.2-RC4 build's exact digest - see note on web's
+    # Pinned to the v1.2-RC5 build's exact digest - see note on web's
     # image above. Shares docker/monerod/Dockerfile's builder stage with
     # monerod itself, just a different final target.
-    image: ghcr.io/silver765/triple-x-monero-wallet-rpc@sha256:b41c630680b32ba00e98ce103e53d43a8dde101f867639131926144e0104cdc1
+    image: ghcr.io/silver765/triple-x-monero-wallet-rpc@sha256:e647954740be12c898aec1cae276c6e36621c746f5e96635b0810ef10f8ac22f
     restart: unless-stopped
     stop_grace_period: 1m
     depends_on:
@@ -131,8 +131,8 @@ services:
       - ${APP_DATA_DIR}/monero-wallet:/home/monero/wallet-data
 
   p2pool:
-    # Pinned to the v1.2-RC4 build's exact digest - see note on web's image above.
-    image: ghcr.io/silver765/triple-x-p2pool@sha256:9404482af3d48007d4c2babea9a66e3c9a2235cbec88f55247d7c7fbc5362c89
+    # Pinned to the v1.2-RC5 build's exact digest - see note on web's image above.
+    image: ghcr.io/silver765/triple-x-p2pool@sha256:7664215ab197d47710f3caee637e4cb91ed60aa66b7807bbd3d9a0ca56eaf12a
     restart: unless-stopped
     stop_grace_period: 1m
     environment:
@@ -229,8 +229,8 @@ services:
       - ${APP_DATA_DIR}/minotari-logs:/var/tari/node/mainnet/log
 
   minotari-wallet:
-    # Pinned to the v1.2-RC4 build's exact digest - see note on web's image above.
-    image: ghcr.io/silver765/triple-x-minotari-wallet@sha256:d67aa26acdba497080df7b93a02ecc25a96c031ff9455e91fec7c3c7aff6fa0b
+    # Pinned to the v1.2-RC5 build's exact digest - see note on web's image above.
+    image: ghcr.io/silver765/triple-x-minotari-wallet@sha256:d00d499a9c0f617c6b2a83f378ed6ecf00aa8ceac605050bc8a7e155330b087b
     restart: unless-stopped
     stop_grace_period: 1m
     command:
